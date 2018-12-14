@@ -1,0 +1,10 @@
+{{ define "title" }}{{ .Data.Plural }} - {{ .Site.Title }}{{ end }}
+
+{{ define "content" }}
+	<div class="terms">
+		{{ $data := .Data }}
+		{{ range $key, $value := .Data.Terms.Alphabetical }}
+			<div class="term-item"><a href="{{ $.Site.BaseURL }}{{ $data.Plural }}/{{ $value.Name | urlize }}"> {{ $value.Name }} </a><sup><small>({{ $value.Count }})</small></sup></div>
+		{{ end }}
+	</div>
+{{ end }}

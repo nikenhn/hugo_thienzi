@@ -1,0 +1,26 @@
+{{ define "title" }}{{ .Title }} · {{ .Site.Title }}{{ end }}
+
+{{ define "post-header" }}
+	{{ if not .Paginator.HasPrev }}
+		{{ if eq .Data.Plural "tags" }}
+			<h1 class="year-title"><a href="{{ .Site.BaseURL }}"><i class="fas fa-home"></i></a> | {{ i18n "tag" }}{{ .Title }}</h1>
+		{{ else if eq .Data.Plural "categories" }}
+			<h1 class="year-title"><a href="{{ .Site.BaseURL }}"><i class="fas fa-home"></i></a> | {{ i18n "category" }}{{ .Title }}</h1>
+		{{ end }}
+	{{ end }}
+	{{ partial "site-nav.html" . }}
+{{ end }}
+
+
+{{ define "content"}}
+
+	<section class="cards">
+		{{ range .Paginator.Pages }}
+			{{ .Render "card" }}
+		{{ end }}
+	</section>
+
+	<!-- pagination -->
+	{{ partial "pagination.html" . }}
+
+{{ end }}

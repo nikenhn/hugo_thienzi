@@ -1,0 +1,25 @@
+{{ define "title" }}{{ "archive" }} - {{ .Site.Title }}{{ end }}
+
+{{ define "post-header" }}
+	{{ $paginator := .Paginator }}
+		{{ if not $paginator.HasPrev }} 
+			{{ $length := len .Data.Pages }}
+			{{ $sectionname := .Section }}
+			<h1 class="post-title"><a href="{{ .Site.BaseURL }}"><i class="fas fa-home"></i></a> | count total {{ $length }} records in {{ $sectionname }} section</h1>
+		{{ end }}
+	{{ partial "site-nav.html" . }}
+{{ end }}
+
+{{ define "content"}}
+
+	<section class="cards">
+		{{ $paginator := .Paginator }}
+		{{ range $paginator.Pages }}
+		{{ .Render "card" }}
+		{{ end }}
+	</section>
+
+	<!-- pagination -->
+	{{ partial "pagination.html" . }}
+
+{{ end }}

@@ -1,0 +1,426 @@
+@import "reset";
+
+$fh: 'IBM Plex Sans', sans-serif;
+$fb: 'IBM Plex Serif', serif;
+$fm: 'IBM Plex Mono', monospace;
+
+$sm: 600px;
+$md: 800px;
+$bg: 1024px;
+$lg: 1280px;
+$hg: 1440px;
+
+$out: 1360px;
+$mid: 1140px;
+$inn: 840px;
+$cnt: 640px;
+
+body {
+	font: 18px/1.5 $fh;
+	color: black;
+	background: #fff;
+	@media (min-width: $md) {
+		background: #555;
+	}
+}
+a {
+	color: darkcyan;
+	text-decoration: none;
+	transition: all 0.3s ease-out;
+	&:hover {
+		color: tomato;
+	}
+}
+pre, code { 
+	font-family: $fm;
+	font-size: 1rem; 
+}
+.outer {
+	max-width: $mid;
+	margin: 0 auto;
+	padding: 2vw 5vw;
+	@media (min-width: $lg) {
+		max-width: $mid;
+		padding: 0;
+	}
+	@media (min-width: $hg) {
+		max-width: $out;
+		padding: 0;
+	}
+}
+.inner {
+	max-width: $inn;
+	margin: 0 auto;
+	@media(min-width: $lg) {
+		max-width: 960px;
+	}
+}
+.middle {
+	max-width: $mid;
+	margin: 0 auto;
+}
+// home page
+.site-header {
+	padding: 1rem 0 0;
+	line-height: 1.2;
+	@media (min-width: $bg) {
+		a { 
+			color: cyan;
+			&:hover {
+				color: white;
+			} 
+		}
+		padding: 1rem 0 1.5rem;
+	}
+	h1 {
+		font-size: 1.5rem;
+		font-weight: bold;
+		color: #aaa;
+		padding-bottom: 0.5rem;
+	}
+	.site-navbar ul li {
+		display: inline-block;
+		text-transform: uppercase;
+		font-size: 80%;
+		font-weight: 600;
+		&:after {
+			content: "\00b7";
+			color: #aaa;
+		}
+		&:last-of-type {
+			&:after {
+				content: "";
+			}
+		}
+	}
+	.post-date {
+		color: #aaa;
+	}
+}
+.site-footer {
+	padding-bottom: 10rem;
+	.outer {
+		border-top: 2px solid black;
+		p {
+			padding-top: 1rem;
+		}
+	}
+}
+// cards aka post listing
+.cards {
+	display: flex;
+	flex-flow: row wrap;
+	margin: -1rem;
+	padding-bottom: 2rem;
+	.card-item {
+		width: 100%;
+		flex: 1 1 auto;
+		margin: 1rem;
+		background: #fff;
+		border-radius: 5px;
+		overflow: hidden;
+		display: flex;
+		flex-flow: column;
+		transition: all 0.2s ease-out;
+		@media (min-width: $md) {
+			width: 50%;
+			background: #eee;
+			box-shadow: 0px 2px 5px #333;
+			&:hover {
+				background: #fff;
+				box-shadow: 0px 10px 25px #333;
+			}
+		}
+		@media (min-width: $bg) {
+			box-shadow: 0px 2px 5px #333;
+			width: 30%;
+		}
+		.card-header {
+			position: relative;
+			.preview-icon {
+				position: absolute;
+				top: 1rem;
+				left: 1rem;
+				color: white;
+			}
+		}
+		.card-title {
+			font-size: 1.2rem;
+			font-weight: bold;
+			line-height: 1.2;
+		}
+		.card-summary {
+			padding-top: 0.5rem;
+			@media (min-width: $md) {
+				padding: 0.5rem 1rem;
+			}
+		}
+		.card-desc {
+			padding-top: 0.5rem;
+		}
+		.post-info {
+			padding: 1rem 0;
+			font-size: 90%;
+			line-height: 1.2;
+			a {
+				font-weight: 600;
+			}
+			@media (min-width: $md) {
+				padding: 0 1rem 1rem 1rem;
+				margin-top: auto;
+			}
+		}
+	}
+	.card-preview {
+		overflow: hidden;
+		display: block;
+		margin-bottom: 0.5rem;
+		background: black;
+		.preview-image {
+			min-height: 250px;
+			transition: all 0.2s ease-out;
+			opacity: 0.5;
+			filter: grayscale(100%);
+			&:hover {
+				filter: none;
+				opacity: 1;
+				transform: scale(1.2);
+			}
+		}
+	}
+}
+
+.post-date, .card-date {
+	font-style: italic;
+	color: #aaa;
+}
+
+// single post aka post full
+.post-full {
+	background: #fff;
+	overflow: hidden;
+	border-radius: 5px;
+	.post-header, .post-full-image {
+		height: 350px;
+		background: darkcyan;
+		margin-bottom: 1rem;
+	}
+	p {
+		padding-bottom: 1.5rem;
+		&:first-of-type {
+			font-family: $fb;
+			font-size: 1.2rem;
+		}
+		code { color: salmon; }
+	}
+	ul {
+		list-style-type: square;
+		list-style-position: inside;
+		padding-bottom: 1.5rem;
+	}
+	ol {
+		list-style-type: decimal-leading-zero; 
+		list-style-position: inside;
+	}
+	ul li, ol li {
+		padding: 0.3rem 0;
+	}
+	.post-content, .blog-inner {
+		h2, h3, h4 {
+			font-weight: 600;
+		}
+		h2 { font-size: 1.5rem; padding: 1.5rem 0; }
+		h3 { font-size: 1.3rem; padding: 1.5rem 0; }
+		h4 { font-size: 1.1rem; padding: 1.5rem 0; }
+	}
+	.code-toolbar { margin-bottom: 2rem; } // nếu không dùng prism thì bỏ đi
+	.footnote-ref {
+		a {
+			background: #ccc;
+			padding: 0 3px;
+			color: black;
+			&:hover {
+				background: darkcyan;
+				color: white;
+			}
+		}
+	}
+	.footnotes {
+		hr { display: none; }
+		border-top: 2px solid black;
+		border-bottom: 2px solid black;
+		margin: 1rem 0;
+		padding: 0 0 1rem;
+		font-size: 90%;
+		&::before {
+			content: "notes:";
+			display: block;
+			text-transform: uppercase;
+			font-size: 80%;
+			font-weight: bold;
+			margin: 0.5rem 0;
+		}
+	}
+	.post-footer {
+		text-align: center;
+		background: #eee;
+		padding: 2rem 1rem;
+	}
+	hr {
+		border: 0;
+		height: 1px;
+		background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+		margin-bottom: 2rem;
+	}
+	.full-img {
+		margin: 1rem 0 2rem;
+		img {
+			border: 1px solid #ddd;
+		}
+	}
+	.cld-image {
+		margin: 0.5rem 0 2rem;
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		img {
+			border: 1px solid #ddd;
+		}
+	}
+	@media (min-width: $bg) {
+		.inner {
+			background: #fff;
+			position: relative;
+			top: -120px;
+			border-radius: 3px;
+		}
+		.post-content {
+			max-width: $cnt;
+			min-height: 300px;
+			margin: 0 auto;
+			padding-top: 5rem;
+		}
+	}
+}
+
+// blog single post
+.blog-inner {
+	padding: 5vw 0;
+	@media (min-width: $bg) {
+		padding: 5rem 0 0;
+	}
+	p, h1, h2, h3, h4, h5, h6, ul, ol, blockquote, pre, table, form, figcaption, .footnotes {
+		max-width: $cnt;
+		margin: 0 auto;
+	}
+	figure {
+		padding: 1rem 0 2rem;
+		img {
+			border: 1px solid #ddd;
+		}
+	}
+	figcaption {
+		font-family: $fb;
+		font-style: italic;
+		color: #aaa;
+	}
+	.gallery {
+		display: flex;
+		flex-flow: row wrap;
+		margin: 0 -0.5rem 1.5rem;
+		.gallery-item, .cld-image {
+			width: 30%;
+			margin: 0.5rem;
+			flex: 1 1 auto;
+			border: 1px solid #ddd;
+			img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+		}
+	}
+	// for icl shortcode (image from cloudinary)
+	.cld-image {
+		margin: 0.5rem 0 2rem;
+		a {
+			display: block;
+			width: 100%;
+			height: 100%;
+		}
+		img {
+			border: 1px solid #ddd;
+		}
+	}
+}
+
+// pagination
+
+.pagination {
+	margin: 2rem 0 1rem;
+	ul li { 
+		display: inline-block; 
+		background: #ccc;
+		a {
+			display: block;
+			padding: 0.5rem 1rem;
+			color: white;
+			&:hover {
+				background: darkcyan;
+			}
+		}
+		&.active {
+			background: #aaa;
+			a:hover {
+				background: none;
+			}
+		}
+		@media (min-width: $bg) {
+			background: #222;
+			a {
+				display: block;
+				padding: 0.5rem 1rem;
+				color: white;
+				&:hover {
+					background: darkcyan;
+				}
+			}
+			&.active {
+				background: black;
+				a:hover {
+					background: none;
+				}
+			}
+		}
+	}
+}
+
+// tags & categories list page
+.terms {
+	font-size: 2rem;
+	font-family: $fb;
+	padding: 5vw 0;
+	.term-item {
+		display: inline-block;
+		@media (min-width: $bg) {
+			a {
+				color: white;
+				&:hover {
+					color: salmon;
+				}
+			}
+		}
+	}
+}
+
+//code hightlight
+.highlight {
+	background: #202020;
+	margin-bottom: 1.5rem;
+	overflow: auto;
+	.chroma {
+		padding: 0.5rem
+	}
+}

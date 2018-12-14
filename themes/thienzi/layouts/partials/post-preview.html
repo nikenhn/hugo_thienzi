@@ -1,0 +1,9 @@
+{{if .Params.preview }}
+	<a class="card-preview" href="{{ .Permalink }}">
+		<div class="preview-image" style="background: url('{{.Params.preview | absURL}}') no-repeat center center; background-size: cover;"></div>
+	</a>
+	{{else}}
+	<a class="card-preview" href="{{ .Permalink }}">
+		<div class="preview-image" style="background: teal;"></div>
+	</a>
+{{ end }}

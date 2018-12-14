@@ -1,0 +1,38 @@
+baseURL = "/"
+languageCode = "en-us"
+title = "thienzi"
+theme = ["thienzi"]
+enableEmoji = true
+# section name automatic to menu
+sectionPagesMenu = "main"
+pluralizeListTitles = false
+# remove accent mark (loại bỏ dấu tiếng việt cho url)
+removePathAccents = true
+# số bài hiển thị trên 1 trang
+paginate = 9
+# giữ nguyên dấu tiếng việt cho taxonomy name
+preserveTaxonomyNames = true
+# setting to use built-in code highlight
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsOptions = "linenos=table"
+
+# auto date font content created
+[frontmatter]
+  date  = [":default", ":filename"]
+  lastmod = [":fileModTime", ":default"]
+
+[permalinks]
+  post = "/:slug/"
+
+# manual add tags & categories to main menu
+[[menu.main]]
+  name = "Tags"
+  weight = 30
+  identifier = "tags"
+  url = "/tags/"
+[[menu.main]]
+  name = "Categories"
+  weight = 40
+  identifier = "categories"
+  url = "/categories/"

@@ -1,0 +1,15 @@
+{{ define "content" }}
+
+	<section class="cards">
+        {{/* (index .Site.Paginate) */}}
+        {{/* tạm thời chỉ lấy dữ liệu từ 2 section: hugo & blog, sẽ mở rộng khi cần thiết */}}
+		{{ $paginator := .Paginate (where .Data.Pages.ByDate.Reverse "Type" "in" (slice "blog" "hugo")) }}
+		{{ range $paginator.Pages }}
+		{{ .Render "card" }}
+		{{ end }}
+	</section>
+
+	<!-- pagination -->
+	{{ partial "pagination.html" . }}
+
+{{ end }}
